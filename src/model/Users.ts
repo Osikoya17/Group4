@@ -16,6 +16,10 @@ const userSchema = new Schema({
         minlength:[6,"Minimum Password length is 6 characters"],
         required:true
     },
+    postCount:{
+        type:Schema.Types.Number,
+        default:null
+    },
     image:{
         contentType:Schema.Types.String,
         data:Buffer
@@ -31,4 +35,4 @@ userSchema.pre("save",async function(next){
         console.log(error);
     }
 })
-export const User = model("user",userSchema)
+export const User = model("users",userSchema)

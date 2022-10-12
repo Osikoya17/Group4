@@ -5,14 +5,14 @@ import { Types } from "mongoose"
 import * as jwt  from "jsonwebtoken"
 import { JWT_SECRET_KEY } from "../config/env"
 export const Login = async(req:Request,res:Response) =>{
-    const {email,password} = req.body
+    const {username,password} = req.body
     const maxAge = 30*60*60
     const createToken  = (id:Types.ObjectId) =>{
     return jwt.sign({id},JWT_SECRET_KEY!,{
         expiresIn:maxAge
     })}
     try {
-        const user = await User.findOne({email})
+        const user = await User.findOne({username})
             if (user){
                 const auth = await bcrypt.compare(password,user.password)
                 if(auth){

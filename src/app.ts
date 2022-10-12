@@ -4,7 +4,7 @@ import {PORT,MONGO_URI} from "./config/env"
 import {router} from "./routes/Routes"
 import mongoose from "mongoose"
 import cors from  "cors"
-mongoose.connect(`${MONGO_URI}`,{},(err)=>{
+mongoose.connect("mongodb+srv://ola:Feranmi123456@ola.4cwxibr.mongodb.net/streamahit?retryWrites=true&w=majority",{},(err)=>{
     if(err) console.log("Please Connect to a WIFI");
     else console.log("Database Connected"); 
 })
