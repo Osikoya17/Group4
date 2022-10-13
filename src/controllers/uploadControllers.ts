@@ -12,8 +12,7 @@ export const Upload = async(req:Request,res:Response) =>{
         const blog = new Blog({
             title,
             story,
-            category,
-            users:uid
+            category
         }).save()
         // session = await startSession()
         // session.startTransaction()
@@ -42,11 +41,11 @@ export const Upload = async(req:Request,res:Response) =>{
         // })
         res.status(200).json({message:"Uploaded Successfully",blog})
     } catch (error) {
-        await session?.abortTransaction()
+        // await session?.abortTransaction()
         const errors = blogErrors(error)
         console.log(error);
         res.status(400).json({errors})
     }finally{
-        await session?.endSession()
+        // await session?.endSession()
     }
 }
