@@ -3,33 +3,9 @@ import { Blog } from "../model/Blogs"
 import {blogErrors} from "./errorsController"
 import * as fs from "fs"
 import path from "path"
-// import { startSession } from "mongoose"
-import { User } from "../model/Users"
 export const Upload = async(req:Request,res:Response) =>{
-    // let session = null
     const{title,story,category,author} = req.body
     try {
-        // const blog = new Blog({
-        //     title,
-        //     story,
-        //     category,
-        //     image
-        // }).save()
-        // session = await startSession()
-        // session.startTransaction()
-        // await User.findOneAndUpdate(
-        //     {_id:uid},
-        //     {
-        //         $inc:{
-        //             'postCount': 1
-        //         }
-        //     },
-        //     {
-        //         session:session
-        //     }
-        // )
-
-        // await session.commitTransaction()
         const blog = await Blog.create({
             title,
             story,
@@ -42,11 +18,8 @@ export const Upload = async(req:Request,res:Response) =>{
         })
         res.status(200).json({message:"Uploaded Successfully",blog})
     } catch (error) {
-        // await session?.abortTransaction()
         const errors = blogErrors(error)
         console.log(error);
         res.status(400).json({errors})
-    }finally{
-        // await session?.endSession()
     }
 }
