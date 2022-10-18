@@ -7,7 +7,7 @@ import path from "path"
 import { User } from "../model/Users"
 export const Upload = async(req:Request,res:Response) =>{
     // let session = null
-    const{title,story,category,image} = req.body
+    const{title,story,category,author} = req.body
     try {
         // const blog = new Blog({
         //     title,
@@ -31,10 +31,10 @@ export const Upload = async(req:Request,res:Response) =>{
 
         // await session.commitTransaction()
         const blog = await Blog.create({
-            title:req.body.title,
-            story:req.body.story,
-            author:req.body.author,
-            category:req.body.category,
+            title,
+            story,
+            author,
+            category,
             image:{
                 data:fs.readFileSync(path.join(__dirname,"..","public/"+ req.file?.filename)),
                 contentType:"image/jpg"
