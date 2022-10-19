@@ -12,14 +12,18 @@ const blogSchema = new Schema({
         type:Schema.Types.String,
         required:[true,"Please enter the category of your story"]
     },
-    users:{
-        type:Schema.Types.ObjectId,
-        ref:"users"
+    author:{
+        type:Schema.Types.String,
+        required:true
     },
-    // image:{
-    //     contentType:Schema.Types.String,
-    //     data:Buffer  
-    // }
+    // users:{
+    //     type:Schema.Types.ObjectId,
+    //     ref:"users"
+    // },
+    image:{
+        contentType:Schema.Types.String,
+        data:Buffer  
+    }
 },{
     timestamps:true
 }

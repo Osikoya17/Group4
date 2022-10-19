@@ -16,7 +16,7 @@ export const Upload = async(req:Request,res:Response) =>{
                 contentType:"image/jpg"
             }
         })
-        res.status(200).json({message:"Uploaded Successfully",blog})
+        res.status(200).json({message:"Uploaded Successfully",blog:blog})
     } catch (error) {
         const errors = blogErrors(error)
         console.log(error);

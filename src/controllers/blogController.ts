@@ -7,5 +7,5 @@ export const Blogs = async(req:Request,res:Response) =>{
     } catch (error) {
         console.log(error);
     }
-    res.status(200).json({message:"Blog"})
+    // res.status(200).json({message:"Blog"})
 } 
